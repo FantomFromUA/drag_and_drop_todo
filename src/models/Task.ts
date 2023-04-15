@@ -1,9 +1,9 @@
 interface Task{
     id:number;
-    description:string;
-    creationDate:Date;
+    title:string;
+    creationDate:string;
     creator:string;
-    coments:number;
+    comments:number;
 }
 
 export default Task;
