@@ -4,17 +4,28 @@ import TodoList from './components/TodoList';
 import Button from 'react-bootstrap/Button';
 import { store } from './store';
 import { getIssues } from './http/getIssues';
+import InProgresList from './components/InProgresList';
+import DoneList from './components/DoneList';
+import { InProgresTaskTypes } from './store/types/inProgresTask';
+import { DoneTaskTypes } from './store/types/doneTask';
 
 function App() {
 
   const [url, setUrl] = useState('');
+  const dispatch = store.dispatch;
 
   const setIssues = () => {
     if(url === ''){
       alert("enter url please!")
     }
 
-    getIssues(store.dispatch, url);
+    getIssues(dispatch, url);
+    dispatch({
+      type: InProgresTaskTypes.DELETE_ALL
+    });
+    dispatch({
+      type: DoneTaskTypes.DELETE_ALL
+    })
   }
 
   return (
@@ -44,14 +55,10 @@ function App() {
             <TodoList />
           </Col>
           <Col>
-            <div className='mx-2 square border border-dark' style={{ backgroundColor: "#CED4DA", height: "93vh" }}>
-
-            </div>
+            <InProgresList/>
           </Col>
           <Col>
-            <div className='mx-2 square border border-dark' style={{ backgroundColor: "#CED4DA", height: "93vh" }}>
-
-            </div>
+            <DoneList/>
           </Col>
         </Row>
       </Container>

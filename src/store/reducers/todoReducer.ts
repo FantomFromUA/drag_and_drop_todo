@@ -1,15 +1,15 @@
-import { TaskState, TaskActions, TaskTypes } from "../types/task";
+import { TodoTaskState, TodoTaskActions, TodoTaskTypes } from "../types/todoTask";
 
-const initialState: TaskState = {
-    tasks: []
+const initialState: TodoTaskState = {
+    todoTasks: []
 }
 
-export const todoReduces = (state = initialState, action: TaskActions) : TaskState => {
+export const todoReduces = (state = initialState, action: TodoTaskActions) : TodoTaskState => {
     switch(action.type){
-        case TaskTypes.ADD_TASK:
-            return {...state, tasks: [...state.tasks, action.payload]}
-        case TaskTypes.DELETE_TASK:
-            return {...state, tasks: state.tasks.filter(task => task.id != action.payload)}
+        case TodoTaskTypes.ADD_TODO_TASK:
+            return {todoTasks: [...state.todoTasks, action.payload]}
+        case TodoTaskTypes.DELETE_TODO_TASK:
+            return {todoTasks: state.todoTasks.filter(task => task.id != action.payload)}
         default:
             return state;
     }
