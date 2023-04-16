@@ -17,6 +17,7 @@ function App() {
   const setIssues = () => {
     if(url === ''){
       alert("enter url please!")
+      return;
     }
 
     getIssues(dispatch, url);

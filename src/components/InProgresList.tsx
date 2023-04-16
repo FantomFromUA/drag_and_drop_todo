@@ -10,19 +10,19 @@ const InProgresList = () => {
 
     const {inProgresTasks: inProgresTasks} = useTypedSelector(store => store.inProgres);
     const dispatch = store.dispatch;
-    
+
     const drop = (e: any) => {
         const task: Task = JSON.parse(e.dataTransfer.getData("transferedTask"));
-        dispatch({
-            type: InProgresTaskTypes.ADD_IN_PROGRES_TASK,
-            payload: task 
-        });
 
         dispatch({
             type: e.dataTransfer.getData("taskType"),
             payload: task.id
         });
         
+        dispatch({
+            type: InProgresTaskTypes.ADD_IN_PROGRES_TASK,
+            payload: task 
+        });
     }
 
     return (

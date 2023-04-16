@@ -13,16 +13,16 @@ const TodoList = () => {
 
     const drop = (e: any) => {
         const task: Task = JSON.parse(e.dataTransfer.getData("transferedTask"));
-        dispatch({
-            type: TodoTaskTypes.ADD_TODO_TASK,
-            payload: task 
-        });
 
         dispatch({
             type: e.dataTransfer.getData("taskType"),
             payload: task.id
         });
         
+        dispatch({
+            type: TodoTaskTypes.ADD_TODO_TASK,
+            payload: task 
+        });
     }
 
     return (

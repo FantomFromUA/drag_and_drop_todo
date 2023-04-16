@@ -16,7 +16,7 @@ const TaskCard: React.FC<{ task: Task, type: InProgresTaskTypes | TodoTaskTypes 
         <Card className='my-2 rounded border border-dark' style={{ width: '18rem' }} draggable onDragStart={e => dragStart(e, props.task.id)}>
             <Card.Body>
                 <Card.Title>{props.task.title}</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">#{props.task.id} opened {0} days ago</Card.Subtitle>
+                <Card.Subtitle className="mb-2 text-muted">#{props.task.id} opened {new Date().getDate() - new Date(props.task.creationDate).getDate()} days ago</Card.Subtitle>
                 <Card.Text className="mb-2 text-muted">
                     {props.task.creator} | Comments: {props.task.comments}
                 </Card.Text>
